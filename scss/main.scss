@@ -1,0 +1,136 @@
+
+$bg-size: 450px;
+$md-size: 350px;
+$sm-size: 250px;
+
+
+* {
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+}
+
+body {
+	background-color: #653e5a;
+
+}
+
+#player {
+	color: pink;
+	font-weight: 100;
+	margin: 20px;
+	min-width: $sm-size - 40px;
+	text-align: center;
+}
+#tic-tac-toe {
+	display: flex;
+	flex-wrap: wrap;
+	height: $bg-size;
+	margin: 20px auto;
+	width: $bg-size;
+
+	.box {
+		cursor: pointer;
+		height: $bg-size / 3;
+		position: relative;
+		width: $bg-size / 3;
+
+		@for $i from 1 through 9 {
+			&:nth-child(#{$i}) {
+				// border-top
+				@if ($i > 3) {
+					border-top: 2px solid pink;
+				}
+
+				// border-right
+				@if (($i % 3) != 0) {
+					border-right: 2px solid pink;
+				}
+
+				// border-bottom
+				@if ($i < 7) {
+					border-bottom: 2px solid pink;
+				}
+
+				// border-left
+				@if (($i % 3) != 1) {
+					border-left: 2px solid pink;
+				}
+
+			}
+		}
+	
+
+		&:after, &:before {
+			opacity: 0;
+			transition: opacity .3s ease;
+		}
+
+		&.crossed {
+
+			&%cross {
+				border: 2px solid pink;
+				content: '';
+				position: absolute;
+				width: 80px;
+				height: 0px;
+				left: calc(50% - 35px);
+				top: 50%;
+			}
+
+			&:after {
+				@extend %cross;
+				opacity: 1;
+				transform: rotate(45deg);
+			}
+
+			&:before {
+				@extend %cross;
+				opacity: 1;
+				transform: rotate(-45deg);
+			}
+		}
+
+		&.circled {
+
+			&:after {
+				content: '';
+				width: 62px;
+				height: 62px;
+				border-radius: 50%;
+				border: 4px solid pink;
+				opacity: 1;
+				position: absolute;
+				top: calc(50% - 35px);
+				left: calc(50% - 35px);
+
+			}
+		}
+	}
+}
+
+
+@media screen and (max-width: 500px) {
+	#tic-tac-toe {
+		width: $md-size;
+		height: $md-size;
+		margin: 30px auto;
+
+		.box {
+			width: $md-size / 3;
+			height: $md-size / 3;
+		}
+	}
+}
+
+@media screen and (max-width: 320px) {
+	#tic-tac-toe {
+		width: $sm-size;
+		height: $sm-size;
+		margin: 40px auto;
+
+		.box {
+			width: $sm-size / 3;
+			height: $sm-size / 3;
+		}
+	}
+}
