@@ -65,7 +65,13 @@ body {
 			transition: opacity .3s ease;
 		}
 
-		&.crossed {
+		.cross {
+
+			width: 0px;
+			height: 0px;
+			position: relative;
+			top: 50%;
+			left: 50%;
 
 			&%cross {
 				border: 2px solid pink;
@@ -73,8 +79,8 @@ body {
 				position: absolute;
 				width: 80px;
 				height: 0px;
-				left: calc(50% - 35px);
-				top: 50%;
+				left: -40px;
+				top: 0px;
 			}
 
 			&:after {
@@ -90,7 +96,13 @@ body {
 			}
 		}
 
-		&.circled {
+		.circle {
+
+			width: 0px;
+			height: 0px;
+			position: relative;
+			top: 50%;
+			left: 50%;
 
 			&:after {
 				content: '';
