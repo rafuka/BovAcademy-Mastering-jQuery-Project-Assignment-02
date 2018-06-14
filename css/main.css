@@ -2,13 +2,58 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif; }
 
+html {
+  height: 100%; }
+
 body {
-  background-color: #653e5a; }
+  background-color: #653e5a;
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%; }
+
+.mask {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  flex-direction: column;
+  height: 100%;
+  z-index: -1;
+  transition: opacity .5s ease;
+  opacity: 0;
+  justify-content: center;
+  align-items: center; }
+
+.result-text {
+  font-size: 3em; }
+  .result-text.win {
+    color: green; }
+  .result-text.lose {
+    color: red; }
+  .result-text.tie {
+    color: yellow; }
+
+.play-again-btn {
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid pink;
+  color: pink;
+  cursor: pointer;
+  transition: all .3s ease; }
+  .play-again-btn:hover {
+    background-color: pink;
+    color: purple; }
 
 #player {
   color: pink;
   font-weight: 100;
-  margin: 20px;
+  margin: 0px;
+  padding: 20px;
   min-width: 210px;
   text-align: center; }
 
@@ -64,15 +109,17 @@ body {
       height: 0px;
       position: relative;
       top: 50%;
-      left: 50%; }
+      left: 50%;
+      opacity: 0.1; }
       #tic-tac-toe .box .cross:after, #tic-tac-toe .box .cross:before {
         border: 2px solid pink;
+        box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.3);
         content: '';
         position: absolute;
-        width: 80px;
+        width: 70px;
         height: 0px;
-        left: -40px;
-        top: 0px; }
+        left: -36px;
+        top: -1px; }
       #tic-tac-toe .box .cross:after {
         opacity: 1;
         transform: rotate(45deg); }
@@ -84,17 +131,19 @@ body {
       height: 0px;
       position: relative;
       top: 50%;
-      left: 50%; }
+      left: 50%;
+      opacity: 0.1; }
       #tic-tac-toe .box .circle:after {
+        box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.3);
         content: '';
-        width: 62px;
-        height: 62px;
+        width: 56px;
+        height: 56px;
         border-radius: 50%;
         border: 4px solid pink;
         opacity: 1;
         position: absolute;
-        top: calc(50% - 35px);
-        left: calc(50% - 35px); }
+        top: calc(50% - 32px);
+        left: calc(50% - 32px); }
 
 @media screen and (max-width: 500px) {
   #tic-tac-toe {
